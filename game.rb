@@ -44,6 +44,10 @@ class Game
       hangman(word.length, incorrect_letters, solved_letters,word)
       
     end
+    if incorrect_letters.length == 6
+      puts "You have lost! The word was #{word}"
+      play_again
+    end
   end
 
   def check_guess(guess)
@@ -78,4 +82,19 @@ class Game
     end
   end
 
+  def play_again
+    puts "Would you like to play again? (Y/N)"
+    choice = gets.chomp.downcase
+    if choice == "y"
+      self.word = get_word.upcase
+      self.available_letters = ('A'..'Z').to_a
+      self.solved_letters = []
+      self.incorrect_letters = []
+      start
+    elsif choice == "n"
+      exit
+    else
+      play_again
+    end
+  end
 end

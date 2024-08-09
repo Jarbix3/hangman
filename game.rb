@@ -31,7 +31,6 @@ class Game
   def start
     instructions_text
     new_game_or_load
-    puts self.word
     hangman(word.length, incorrect_letters, solved_letters,word)
     turns    
   end
